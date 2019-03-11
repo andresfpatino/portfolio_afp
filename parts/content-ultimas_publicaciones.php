@@ -28,7 +28,7 @@
                     <?php if ( has_post_thumbnail() ) {
                         the_post_thumbnail('blog_thumbnail' , array('class' => 'f-img img-fluid mx-auto'));
                     } else { ?>
-                        <img class="f-img img-fluid mx-auto" src="<?php bloginfo('template_directory'); ?>/img/default_thumbnail.jpg" alt="<?php the_title(); ?>" />
+                        <img class="f-img img-fluid mx-auto" src="<?php bloginfo('template_directory'); ?>/img/default_post.jpg" alt="<?php the_title(); ?>" />
                     <?php } ?>                    
                 </div>
                 <div class="bottom d-flex justify-content-between align-items-center flex-wrap">

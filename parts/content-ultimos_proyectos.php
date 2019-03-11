@@ -31,6 +31,18 @@
 
            	<!-- Contenidos proyectos-->
 			<?php 
+			    
+			    if ( is_page('inicio') ) {
+				    $args = array (
+				   	    'post_type'              => 'proyectos',
+				        'post_status'            =>'publish',
+				        'posts_per_page'         => 6,
+				        'order'                  => 'ASC',
+				        'orderby'                => 'date'
+				    );
+				    $the_query = new WP_Query( $args );
+			    }  else {
+				
 				$args = array (
 				   	'post_type'              => 'proyectos',
 				    'post_status'            =>'publish',
@@ -39,6 +51,9 @@
 				    'orderby'                => 'date'
 				);
 				$the_query = new WP_Query( $args );
+				
+			    }
+				
 			?>
 
 			<?php if ( $the_query->have_posts() ) : ?>
@@ -57,18 +72,24 @@
 					<div class="single-portfolio col-sm-4 all <?php echo $termsString; ?>">
 						<div class="relative">
 							<div class="thumb">
-								<div class="overlay overlay-bg"></div>				
+							    
+							 <?php $link = get_field('link_proyecto');  ?>
+							    
+							 <a href="<?php echo $link; ?>" target="_blank">
+							     
+								<div class="overlay overlay-bg"></div>
 								<?php if ( has_post_thumbnail() ) { 
 								    the_post_thumbnail('', array('class' => 'image img-fluid')); 
 								} ?>
 							</div> 
-							<a href="#">
+						
 					            <div class="middle">
 						            <div class="text align-self-center d-flex">
 						            	<img src=" <?php echo get_template_directory_uri() ?>/img/preview.png">
 						            </div> 
 								</div> 
 							</a>
+							
 						</div>
 						<div class="p-inner">
 							<h4><?php echo get_the_title(); ?></h4>
@@ -80,6 +101,20 @@
 				</div>
 			</div>
 			<?php endif; ?>
+			
+			
+			<?php if ( is_page('inicio') ) { ?>
+			
+			<div class="container">
+			    <div class="row d-flex justify-content-center align-items-center">
+			        <div class="col-md-12 text-center mt-40">
+			            <a href="https://felipepatino.com/proyectos" class="primary-btn text-uppercase"> Conoce todos mis proyectos </a>
+			        </div>
+			    </div>
+			</div>
+			<?php } ?>
+			
+			
         </div>
     </section> 
 <?php endif; ?>

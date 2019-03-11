@@ -8,7 +8,7 @@
 		<meta name="author" content="Andrés Felipe Patiño Vallejo">
 
 		<!-- Site Title -->
-		<title><?php bloginfo('name'); ?></title>
+		<title> <?php wp_title(''); ?> <?php if(wp_title('', false)); ?></title>
 
 		<?php wp_head(); ?>
 		
